@@ -1,0 +1,47 @@
+"""
+A pet is the main type that's part of our API
+"""
+type Pet {
+  id: ID!
+  name: String!
+  weight: Float
+  category: PetCategory
+  description: String
+  status: PetStatus
+}
+
+enum PetStatus {
+  AVAILABLE
+  CHECKEDOUT
+}
+
+enum PetCategory {
+  CAT
+  DOG
+  RABBIT
+  STINGRAY
+}
+
+type Query {
+  totalPets: String
+  allPets(status: PetStatus): [Pet!]!
+  petById(id: ID!): Pet!
+}
+
+type Customer {
+  id: ID!
+  name: String!
+}
+
+input CreateAccountInput {
+  name: String!
+  password: String!
+  description: String
+}
+
+"""
+
+"""
+type Mutation {
+  createAccount(input: CreateAccountInput!): Customer!
+}
